@@ -32,7 +32,7 @@ namespace TestRPG.Scenes
             Console.Clear();
             Console.WriteLine("====================================");
             Console.WriteLine("=                                  =");
-            Console.WriteLine("=           레전드 RPG             =");
+            Console.WriteLine("=           텍스트 RPG             =");
             Console.WriteLine("=                                  =");
             Console.WriteLine("====================================");
             Console.WriteLine();

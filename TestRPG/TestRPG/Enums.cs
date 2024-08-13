@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestRPG
 {
-    public enum SceneType { Title, Select, Town, Battle, Inventory, Shop, GameOver, Size }
+    public enum SceneType { Title, Select, Town, Battle, Inventory, Shop, GameOver, Event, Size }
 
-    public enum Job { Warrior = 1, Mage, Rogue }
+    public enum Job { Nomad = 1, StreetKid, CorporateSlaves }
 }

@@ -1,4 +1,6 @@
-﻿namespace TestRPG
+﻿using TestRPG.Players;
+
+namespace TestRPG
 {
     internal class Program
     {
