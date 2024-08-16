@@ -65,8 +65,9 @@ namespace TestRPG.Scenes
                 Console.WriteLine($"이성 : {game.Player.MaxMP}");
                 Console.WriteLine($"공격 : {game.Player.Attack}");
                 Console.WriteLine($"내구 : {game.Player.Defense}");
+                Console.WriteLine($"회피 : {game.Player.Avoidance}");
                 if (game.Player.Job == Job.Nomad)                
-                    Console.WriteLine("스킬 : 연막탄");                                      
+                    Console.WriteLine("스킬 : 훔치기");                                      
                 else if (game.Player.Job == Job.StreetKid)
                     Console.WriteLine("스킬 : 마구베기");
                 else if (game.Player.Job == Job.CorporateSlaves)

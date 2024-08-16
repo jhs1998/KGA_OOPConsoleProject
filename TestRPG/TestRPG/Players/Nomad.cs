@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,10 +20,13 @@ namespace TestRPG.Players
             this.maxMP = 40;
             this.curMP = maxMP;
             this.attack = 20;
-            this.defense = 15;
+            this.defense = 5;
+            this.avoidance = 3;
+            this.trace = 0;
+            this.Area = 0;
             this.gold = 500;
 
-            skills.Add(new PlayerSkill("훔치기", 10, 0, "적이가진 골드를 훔친다."));
+            skills.Add(new PlayerSkill("훔치기", 10, 0, "적이 가진 골드를 훔친다."));
         }
 
         public override void Skill(Monster monster)
@@ -30,8 +34,13 @@ namespace TestRPG.Players
             if (curMP >= 10)
             {
                 Console.WriteLine($"{name}이(가) 스킬사용");
-                gold += defense*123;
+                gold += monster.Defense *123;
                 curMP -= 10;
+                if (monster.Defense * 123 != 0)
+                    Console.WriteLine($"{monster.Defense * 123} G 를 얻었다.");
+                else
+                    Console.WriteLine($"{monster.Name}에게 돈을 훔치는데 실패했다.");
+
             }
             else
             {
@@ -40,24 +49,24 @@ namespace TestRPG.Players
         }
         public override void Damage(Monster monster)
         {
-            int non = monster.attack - defense;
+            int non = monster.Attack - defense;
             if (non > 0)
             {
                 curHP -= non;
                 if (curHP <= 0)
                 {
                     curHP = 0;
-                    Console.WriteLine($"{monster.name}이(가) ({monster.attack}-{defense}) 공격하여 체력이 {curHP}남았습니다.");
+                    Console.WriteLine($"{monster.Name}이(가) ({monster.Attack}-{defense}) 공격하여 체력이 {curHP}남았습니다.");
                     Console.WriteLine("체력이 0이 되어 사망하였습니다.");
                 }
                 else if (curHP > 0)
                 {
-                    Console.WriteLine($"{monster.name}이(가) ({monster.attack}-{defense}) 공격하여 체력이 {curHP}남았습니다.");
+                    Console.WriteLine($"{monster.Name}이(가) ({monster.Attack}-{defense}) 공격하여 체력이 {curHP}남았습니다.");
                 }
             }
             else if (non <= 0)
-                non = 0;                    
-                Console.WriteLine($"{monster.name}의 공격이 막혔습니다.");
+                non = 0;
+            Console.WriteLine($"{monster.Name}의 공격이 막혔습니다.");
         }
     }
 }

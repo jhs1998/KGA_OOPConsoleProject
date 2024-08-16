@@ -19,10 +19,13 @@ namespace TestRPG.Players
             this.maxMP = 40;
             this.curMP = maxMP;
             this.attack = 40;
-            this.defense = 8;
+            this.defense = 0;
+            this.avoidance = 8;
+            this.trace = 0;
+            this.Area = 0;
             this.gold = 100;
 
-            skills.Add(new PlayerSkill("마구베기", 10, 40, "적을 3번 공격한다."));
+            skills.Add(new PlayerSkill("마구베기", 10, attack*3, "적을 3번 공격한다."));
         }
 
         public override void Skill(Monster monster)
@@ -31,9 +34,9 @@ namespace TestRPG.Players
             {
                 Console.WriteLine($"{name}이(가) 스킬사용");
                 monster.GetDamage(attack);
-                Thread.Sleep(100);
+                Thread.Sleep(1000);
                 monster.GetDamage(attack);
-                Thread.Sleep(100);
+                Thread.Sleep(1000);
                 monster.GetDamage(attack);
                 curMP -= 10;
             }
@@ -44,24 +47,24 @@ namespace TestRPG.Players
         }
         public override void Damage(Monster monster)
         {
-            int non = monster.attack - defense;
+            int non = monster.Attack - defense;
             if (non > 0)
             {
                 curHP -= non;
                 if (curHP <= 0)
                 {
                     curHP = 0;
-                    Console.WriteLine($"{monster.name}이(가) ({monster.attack}-{defense}) 공격하여 체력이 {curHP}남았습니다.");
+                    Console.WriteLine($"{monster.Name}이(가) ({monster.Attack}-{defense}) 공격하여 체력이 {curHP}남았습니다.");
                     Console.WriteLine("체력이 0이 되어 사망하였습니다.");
                 }
                 else if (curHP > 0)
                 {
-                    Console.WriteLine($"{monster.name}이(가) ({monster.attack}-{defense}) 공격하여 체력이 {curHP}남았습니다.");
+                    Console.WriteLine($"{monster.Name}이(가) ({monster.Attack}-{defense}) 공격하여 체력이 {curHP}남았습니다.");
                 }
             }
             else if (non <= 0)
                 non = 0;
-            Console.WriteLine($"{monster.name}의 공격이 막혔습니다.");
+            Console.WriteLine($"{monster.Name}의 공격이 막혔습니다.");
         }
     }
 }
