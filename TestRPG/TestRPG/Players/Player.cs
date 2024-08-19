@@ -77,11 +77,8 @@ namespace TestRPG.Players
 
         public List<PlayerSkill> skills = new List<PlayerSkill>();
         public List<Item> Inventory { get; set; }
-        public Player()
-        {
-            // Inventory 초기화
-            Inventory = new List<Item>();
-        }
+
+       
         public abstract void Skill(Monster monster);
         public abstract void Damage(Monster monster);
 

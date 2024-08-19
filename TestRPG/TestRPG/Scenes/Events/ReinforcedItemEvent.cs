@@ -16,7 +16,6 @@ namespace TestRPG.Scenes.Events
 
         public ReinforcedItemEvent(Game game) : base(game)
         {
-            game.Player.Inventory.Add(new EquippedItem("강화 슈트", 0, "전신을 보호하는 갑옷이다. 소지시 방어 +10", 10));
         }
 
         public override void Enter()
