@@ -29,16 +29,48 @@
 게임 타이틀 및 데이터 입력
 
 
+![알피지 진입](https://github.com/user-attachments/assets/91d2dd9b-eb74-4236-a6dd-ea4637dbca5e)
+![직업 선택](https://github.com/user-attachments/assets/4587674c-c7fe-4155-b6af-d0b830874610)
+![캐릭터 생성 정보](https://github.com/user-attachments/assets/9a2bde9f-2285-4df5-a8aa-4bbcaae35b9d)
+
+
+이름 입력, 직업별 배경 및 능력치 스킬 차별화
+
+
 * 거점 선택지
   * 전투, 인벤토리, 상점 선택
+ 
+    
+![거점 선택](https://github.com/user-attachments/assets/c0825a87-8dd5-4811-9fa9-1a97ce84d7f9)
+
+
+일정 간격으로 거점 등장, 거점에서 물품 구매 및 소지품 확인 가능
 
 
 * 전투 선택지
   * 공격, 스킬, 회피 사용 가능
 
 
+![전투 선택지](https://github.com/user-attachments/assets/bd9e8b29-be72-4261-89ad-6d864c1916c4)
+
+
+선택지는 공격, 스킬, 회피, 아이템 사용으로 구성
+
+
+등장 적은 정해진 적들중 랜덤으로 적 출현, 일정 적 소탕시 정예 적 출현
+
+
+각 능력치에 따라 공격과 회피의 성공이 결정되며 이성 부족시 스킬 사용 불가, 인벤토리에서 소비 아이템 사용 가능
+
+
 * 상점
   * 아이템 구매시 인벤토리에 아이템 생성
+ 
+    
+![상점 선택지](https://github.com/user-attachments/assets/16036d3f-9137-444b-af93-9af86294a305)
+
+
+소지금으로 아이템 구매 가능
 
 
 * 아이템
@@ -51,8 +83,18 @@
   * 전투 중 인벤토리에서 소비 아이템 사용 가능
 
 
+![인벤토리 확인](https://github.com/user-attachments/assets/df5d4ab6-7859-44b4-b598-7736bff919b3)
+
+
 * 이벤트
   * 능력 상승 이벤트
   * 아이템 습득 이벤트
 
 
+![이벤트](https://github.com/user-attachments/assets/88694baf-01f6-4e2a-a9b4-e457f0dda102)
+
+
+예시 : 능력상승 이벤트, 수락시 일정확률로 성공 및 실패
+
+
+성공 : 능력치 상승, 실패 : 능력치 하락 이벤트 거절시 다음 씬으로 이동
