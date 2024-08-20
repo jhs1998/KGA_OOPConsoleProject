@@ -77,8 +77,12 @@ namespace TestRPG.Players
 
         public List<PlayerSkill> skills = new List<PlayerSkill>();
         public List<Item> Inventory { get; set; }
+        public Player()
+        {
+            // 다른 속성 초기화
+            Inventory = new List<Item>(); // Inventory 리스트 초기화
+        }
 
-       
         public abstract void Skill(Monster monster);
         public abstract void Damage(Monster monster);
 
@@ -157,10 +161,7 @@ namespace TestRPG.Players
                 CurHP = 0;
             }
         }
-        public void UpStat(int stat)
-        {
-
-        }
+        
 
     }
 }

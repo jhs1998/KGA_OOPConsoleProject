@@ -60,14 +60,25 @@ namespace TestRPG.Scenes
         {
             string input = Console.ReadLine();
             int ch;
+            bool isValidInput = int.TryParse(input, out ch);
             int.TryParse(input, out ch);
             // TODO : 상점 처리
-            Console.Clear();                      
+            Console.Clear();
+            if (!isValidInput || ch < 0 || ch > itemslist.Count)
+            {
+                Console.Clear();
+                Console.WriteLine("잘못된 입력입니다. 다시 시도해 주세요.");
+                Thread.Sleep(2000);
+                return;
+            }
             if (ch == 0)
             {
                 game.ReturnScene();
+                return; // 상점에서 나가기
             }
+            
             Item pickitem = itemslist[ch - 1];
+
             if (pickitem.Price > game.Player.Gold)
             {
                 Console.WriteLine($"소지금이 부족합니다.");
@@ -86,6 +97,8 @@ namespace TestRPG.Scenes
                     game.Player.Defense += 2;
                     Console.WriteLine($"{pickitem.Name}을 구입하여 방어가 2 상승했습니다");
                 }
+
+                game.Player.Inventory.Add(pickitem);
             }
             game.Player.ShowInfo();
             Thread.Sleep(2000);

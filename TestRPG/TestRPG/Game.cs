@@ -21,6 +21,9 @@ namespace TestRPG
         public Scene CurScene { get { return curScene; } }
 
         private Player player;
+
+
+        
         public Player Player { get { return player; } set { player = value; } }
         public Scene GetScene(SceneType sceneType)
         {

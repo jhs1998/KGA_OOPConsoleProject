@@ -12,10 +12,11 @@ namespace TestRPG.Scenes.Events
     internal class ReinforcedItemEvent : Scene
     {
         private string input;
-
+        private List<Item> itemslist = new List<Item>();
 
         public ReinforcedItemEvent(Game game) : base(game)
         {
+            itemslist.Add(new EquippedItem("강화 슈트", 0, "몸 전체를 보호해주는 방어구이다. 내구 +10", 10));
         }
 
         public override void Enter()
@@ -47,7 +48,7 @@ namespace TestRPG.Scenes.Events
             game.Player.Defense += 10;
             game.Player.ShowInfo();
             Console.WriteLine("당신은 아이템을 습득하였습니다.");
-            // 아이템 습득 표현 해줘야 함
+            game.Player.Inventory.Add(itemslist[0]);
             Console.WriteLine($" 아이템 강화슈트 습득");
             Console.WriteLine("전신을 보호하는 갑옷이다. 소지시 방어 +10");
             Console.WriteLine("전진하려면 아무런 키를 눌러주세요.");
