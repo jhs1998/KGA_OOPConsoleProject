@@ -78,6 +78,22 @@ namespace TestRPG.Scenes
                     if (iteminput == "y" || iteminput == "Y")
                     {
                         item.Use(game.Player, game.Player.Monster);
+                        if (item.Name == "회복키트")
+                        {
+                            game.Player.CurHP += 50;
+                            if (game.Player.CurHP > game.Player.MaxHP)
+                                game.Player.CurHP = game.Player.MaxHP;
+                            Console.WriteLine($"{game.Player.Name}은 {item.Name}를 사용하여 {item.Description}만큼 회복하였습니다..");
+                            Thread.Sleep(2000);
+                        }                                               
+                        else if (item.Name == "폭탄")
+                        {
+                            game.Player.Monster.HP -= 200;
+                            Console.WriteLine($"{game.Player.Monster.Name}에게 {item.Description}데미지를 입혔습니다.");
+                            Thread.Sleep(2000);
+                        }
+                            
+
                         game.Player.Inventory.Remove(item);
                         Console.WriteLine($"{item.Name}를 사용하여 인벤토리에서 삭제 되었습니다.");
                     }

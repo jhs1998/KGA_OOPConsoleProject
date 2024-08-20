@@ -12,6 +12,7 @@ namespace TestRPG.Scenes.NewFolder
         private Monster monster;
         private bool continuebattle = true;
         private bool realat = true;
+        int inven = 0;
         Random rand = new Random();
         Random atav = new Random();
         public FactoryAreaBattleScene(Game game) : base(game)
@@ -80,11 +81,10 @@ namespace TestRPG.Scenes.NewFolder
             // TODO : 전투 상황 출력
 
         }
-
         public override void Update()
         {
             string number = Console.ReadLine();
-
+            inven = 0;
             switch (number)
             {
                 case "1":
@@ -100,38 +100,41 @@ namespace TestRPG.Scenes.NewFolder
                     AvoidanceAttact();
                     break;
                 case "4":
-                    game.ChangeScene(SceneType.Inventory);
+                    inven = 1;
                     break;
                 default:
                     Console.WriteLine("다시 입력해주세요.");
                     break;
             }
-
-            if (monster.HP == 0)
-                continuebattle = false;
-
-            if (realat == true)
+            if (inven == 1)
+                game.ChangeScene(SceneType.Inventory);
+            else
             {
-                if (monster.Skill != monster.Skillcost)
+                if (monster.HP <= 0)
+                    continuebattle = false;
+
+                if (realat == true)
                 {
-                    game.Player.GetDamage(monster.Attack);
-                    monster.Skill += 1;
+                    if (monster.Skill != monster.Skillcost)
+                    {
+                        game.Player.GetDamage(monster.Attack);
+                        monster.Skill += 1;
+                    }
+                    else if (monster.Skill == monster.Skillcost)
+                    {
+                        game.Player.GetSkillDamage(monster.Name, monster.SkillDamage, monster.SkillName);
+                        monster.Skill = 0;
+                    }
                 }
-                else if (monster.Skill == monster.Skillcost)
+
+                if (continuebattle == false)
                 {
-                    game.Player.GetSkillDamage(monster.Name, monster.SkillDamage, monster.SkillName);
-                    monster.Skill = 0;
+                    BattleResurtScene battleResurtScene = (BattleResurtScene)game.GetScene(SceneType.BattleResurt);
+                    battleResurtScene.GetMonster(monster);
+                    game.ChangeScene(SceneType.BattleResurt);
                 }
             }
-
-            if (continuebattle == false)
-            {
-                BattleResurtScene battleResurtScene = (BattleResurtScene)game.GetScene(SceneType.BattleResurt);
-                battleResurtScene.GetMonster(monster);
-                game.ChangeScene(SceneType.BattleResurt);
-            }
-
-        }
+        }       
         private void InterfaceMonster()
         {
             Console.WriteLine($" {monster.Name}");

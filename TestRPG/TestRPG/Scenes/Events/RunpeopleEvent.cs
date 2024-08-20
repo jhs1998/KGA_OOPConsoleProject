@@ -11,10 +11,11 @@ namespace TestRPG.Scenes.Events
     internal class RunpeopleEvent : Scene
     {
         private string input;
-
+        private List<Item> itemslist = new List<Item>();
 
         public RunpeopleEvent(Game game) : base(game)
         {
+            itemslist.Add(new UsingItem("폭탄", 200, "적에게 던져 피해를 입힌다. 적에게 사용시 50데미지", 50));
         }
 
         public override void Enter()
@@ -43,7 +44,7 @@ namespace TestRPG.Scenes.Events
             Console.Clear();
             game.Player.ShowInfo();
             game.Player.Trace += 1;
-            Console.WriteLine("당신은 아이템을 습득하였습니다.");
+            Console.WriteLine("당신은 아이템 {}을 습득하였습니다.");
             // 아이템 습득 표현 해줘야 함
             Console.WriteLine($" 아이템 뭐뭐 습득");
             Console.WriteLine("아이템 설명");
